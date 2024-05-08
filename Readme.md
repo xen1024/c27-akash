@@ -1,5 +1,7 @@
 # Prepare
 
+Clone repo to compute-subnet (See Dockerfile `COPY compute-subnet /app`)
+
 # Build
 
 Build docker container for Akash
