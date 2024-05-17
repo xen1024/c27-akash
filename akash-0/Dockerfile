@@ -34,4 +34,9 @@ COPY compute-subnet /app
 RUN cd /app && \
   python3 -m pip install -r requirements.txt --break-system-packages
 
+# Bittensor
 
+COPY startup.sh /app/bittensor.sh
+
+# Start Bittensor neuron
+CMD ["./bittensor.sh", ""]
