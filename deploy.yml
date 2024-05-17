@@ -1,0 +1,31 @@
+version: "2.0"
+services:
+  service-1:
+    image: gojo89/compute-27-akash:0.1-dev
+    expose:
+      - port: 22
+        as: 22
+        proto: tcp
+        to:
+          - global: true
+profiles:
+  compute:
+    service-1:
+      resources:
+        cpu:
+          units: 4
+        memory:
+          size: 512Mi
+        storage:
+          - size: 1Gi
+  placement:
+    dcloud:
+      pricing:
+        service-1:
+          denom: uakt
+          amount: 1000
+deployment:
+  service-1:
+    dcloud:
+      profile: service-1
+      count: 1
