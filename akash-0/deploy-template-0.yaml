@@ -22,11 +22,16 @@ profiles:
     service-1:
       resources:
         cpu:
-          units: 4
+          units: 1
         memory:
           size: 512Mi
         storage:
           - size: 1Gi
+        gpu:
+          units: 1
+          attributes:
+            vendor:
+              nvidia:
   placement:
     dcloud:
       pricing:
