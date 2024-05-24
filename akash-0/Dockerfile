@@ -36,6 +36,8 @@ COPY compute-subnet /app
 
 # 2. Install deps
 
+RUN apt install -y hashcat
+
 RUN pip install colorama --break-system-packages
 RUN cd /app && \
   python3 -m pip install -r requirements.txt --break-system-packages
@@ -44,10 +46,10 @@ RUN cd /app && \
 
 # Setup wallet
 RUN mkdir -p /root/.bittensor/wallets/default
-COPY wallet/default /root/.bittensor/wallets/default
+#COPY wallet/default /root/.bittensor/wallets/default
 
 # Bittensor startup script 
-COPY startup.sh /app/bittensor.sh
+COPY startup.sh /app/startup.sh
 
 # Start Bittensor neuron
-#CMD ["./bittensor.sh", ""]
+#CMD ["./startup.sh", ""]
