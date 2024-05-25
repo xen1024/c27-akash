@@ -1,6 +1,11 @@
 # Use a Linux base image
 FROM ubuntu:latest as base
 
+# ENV NODE_ENV production
+# ENV PORT 3000
+# EXPOSE 3000
+# RUN npm install --production
+
 # Set the working directory to /app
 WORKDIR /app
 

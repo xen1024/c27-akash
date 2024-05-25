@@ -2,4 +2,4 @@ docker-build-old.sh
 .DS_Store
 wallet
 compute-subnet
-config-akash
+config-akash.*

@@ -6,4 +6,5 @@ export NETWORK=test
 export WALLET_NAME=default
 export WALLET_HOTKEY=default
 export WANDB_KEY=
-Config imported!
+export SSH_PORT=22
+echo Config imported!

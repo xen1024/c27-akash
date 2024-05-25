@@ -6,6 +6,7 @@ NETWORK=test
 WALLET_NAME=default
 WALLET_HOTKEY=default
 WANDB_KEY=
+SSH_PORT=22
 
 if [ -f config-akash ]; then
   echo Importing config-akash
@@ -22,6 +23,7 @@ dump_variables () {
   echo WALLET_NAME=$WALLET_NAME
   echo WALLET_HOTKEY=$WALLET_HOTKEY
   echo WANDB_KEY=$WANDB_KEY
+  echo SSH_PORT=22
 }
 
 dump_variables
@@ -39,4 +41,5 @@ echo "export NETWORK=$NETWORK" >> config-akash
 echo "export WALLET_NAME=$WALLET_NAME" >> config-akash
 echo "export WALLET_HOTKEY=$WALLET_HOTKEY" >> config-akash
 echo "export WANDB_KEY=$WANDB_KEY" >> config-akash
-echo "Config imported!" >> config-akash
+echo "export SSH_PORT=$SSH_PORT" >> config-akash
+echo "echo Config imported!" >> config-akash
