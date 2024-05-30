@@ -27,7 +27,19 @@ RUN chmod 0755 /var/run/sshd
 # Start SSH server
 CMD ["/usr/sbin/sshd", "-D"]
 
-FROM base as compute-subnet
+FROM base as base-gpu
+
+# Install nvidia drivers
+RUN wget https://developer.download.nvidia.com/compute/cuda/12.3.1/local_installers/cuda-repo-ubuntu2204-12-3-local_12.3.1-545.23.08-1_amd64.deb
+#RUN cp /var/cuda-repo-ubuntu2204-12-3-local/cuda-*-keyring.gpg /usr/share/keyrings/
+#RUN dpkg -i cuda-repo-ubuntu2204-12-3-local_12.3.1-545.23.08-1_amd64.deb
+#RUN echo "deb http://archive.ubuntu.com/ubuntu/ lunar universe" >> /etc/apt/sources.list
+
+#RUN apt-get update
+#RUN apt-get -y install cuda-toolkit-12-3
+#RUN apt-get -y install -y cuda-drivers
+
+FROM base-gpu as compute-subnet
 
 # Setup compute-subnet
 
@@ -54,7 +66,29 @@ RUN mkdir -p /root/.bittensor/wallets/default
 #COPY wallet/default /root/.bittensor/wallets/default
 
 # Bittensor startup script 
-COPY startup.sh /app/startup.sh
+COPY y-scripts/startup.sh /app/startup.sh
 
 # Start Bittensor neuron
 #CMD ["./startup.sh", ""]
+
+FROM compute-subnet as debug
+
+RUN apt install -y npm telnet psmisc
+RUN npm install -g https://github.com/d08ble/livecomment
+RUN npm install -g frontail
+
+COPY y-scripts/start-debug.sh /root
+RUN chmod +x /root/start-debug.sh
+COPY y-scripts/neuron-stats.sh /root
+RUN chmod +x /root/neuron-stats.sh
+COPY y-scripts/llog /app/
+#COPY y-scripts/llog/C0000.sh /app
+
+WORKDIR /root
+
+CMD ["sh", "./start-debug.sh"]
+
+EXPOSE 3070
+EXPOSE 8980
+EXPOSE 8400
+EXPOSE 8401
