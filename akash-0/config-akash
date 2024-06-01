@@ -7,4 +7,6 @@ export WALLET_NAME=default
 export WALLET_HOTKEY=default
 export WANDB_KEY=6a2506d9415420d652f64d804d24ab39f1ebe53c
 export SSH_PORT=22
+export MINER=true
+export VALIDATOR=false
 echo Config imported!

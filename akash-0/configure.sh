@@ -7,6 +7,8 @@ WALLET_NAME=default
 WALLET_HOTKEY=default
 WANDB_KEY=
 SSH_PORT=22
+MINER=true
+VALIDATOR=false
 
 if [ -f config-akash ]; then
   echo Importing config-akash
@@ -15,16 +17,7 @@ else
   echo config-akash not found
 fi
 
-dump_variables () {
-  echo SSH_PUBKEY=$SSH_PUBKEY
-  echo DOCKER_CONTAINER=$DOCKER_CONTAINER
-  echo NETUID=$NETUID
-  echo NETWORK=$NETWORK
-  echo WALLET_NAME=$WALLET_NAME
-  echo WALLET_HOTKEY=$WALLET_HOTKEY
-  echo WANDB_KEY=$WANDB_KEY
-  echo SSH_PORT=22
-}
+. lib.sh
 
 dump_variables
 
@@ -42,4 +35,8 @@ echo "export WALLET_NAME=$WALLET_NAME" >> config-akash
 echo "export WALLET_HOTKEY=$WALLET_HOTKEY" >> config-akash
 echo "export WANDB_KEY=$WANDB_KEY" >> config-akash
 echo "export SSH_PORT=$SSH_PORT" >> config-akash
+echo "export MINER=$MINER" >> config-akash
+echo "export VALIDATOR=$VALIDATOR" >> config-akash
 echo "echo Config imported!" >> config-akash
+
+echo Modify config-akash for your options

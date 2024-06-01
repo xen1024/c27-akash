@@ -28,16 +28,6 @@ services:
         proto: tcp
         to:
           - global: true
-      - port: 8400
-        as: 8400
-        proto: tcp
-        to:
-          - global: true
-      - port: 8401
-        as: 8401
-        proto: tcp
-        to:
-          - global: true
 profiles:
   compute:
     service-1:
@@ -53,8 +43,8 @@ profiles:
           attributes:
             vendor:
               nvidia:
-                - model: rtx4090
-                  ram: 24Gi
+                - model: a100
+                  ram: 40Gi
   placement:
     dcloud:
       pricing:

@@ -62,11 +62,13 @@ RUN cd /app && \
 # 3. Bittensor
 
 # Setup wallet
-RUN mkdir -p /root/.bittensor/wallets/default
+RUN mkdir -p /root/.bittensor/wallets
+#RUN mkdir -p /root/.bittensor/wallets/default
 #COPY wallet/default /root/.bittensor/wallets/default
 
 # Bittensor startup script 
 COPY y-scripts/startup.sh /app/startup.sh
+COPY y-scripts/run0.sh /root/
 
 # Start Bittensor neuron
 #CMD ["./startup.sh", ""]

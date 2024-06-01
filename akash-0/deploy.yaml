@@ -3,10 +3,38 @@ services:
   service-1:
     image: gojo89/compute-27-akash:0.1-dev
     env:
-      - SSH_KEY=AAAAB3NzaC1yc2EAAAABIwAAAQEAr1N8b
+      - SSH_KEY=AAAAB3NzaC1yc2EAAAADAQABAAABgQDK23t11Y6GkFeiLxnv0cHI4DNXfzUTt49lmJRUsP1af3t1ZXHfaDAQNFQ2KAkgYOB/iJeHxAXmQlrclNDpR5W+tTwUBelTeT349uQtG3InSVtlSJYwsO13wAzhv3LRuSNPmZABq6PslxFQE1ViniTo/mblPlOr41BHImap1FxH64k98KbqmfBhovjpbRthkQNvtzk1as4Lqh3ZvFFJaApLnfWPZAuSjLZZ8qFGUQ/eYXsDb3BySiAM/omnOGPGtx1cpifqJhyLeC4/Ofgt2anvcteCSF4xcKwBFvgmIDMZrchlzdO9kNj0H6dkUmVo3hs/ijn1B6SWkHe+2L7f2jrp7jKbndOnLFswkB3BKmr/IYR4wqgCJ3Iy1H7HPQ3jqseYlCkIiwTyeCLrmEqtysTG5i2moa1mQOd3yuDUMcGNU1zgRWJotxH9eFRMN7s5/KBcF81sNFeZY9JLSWkI5SUBLCP1pHONgSeh7lpW9vjrV7gtzQTNOCgUyalHIHGdpgs=
+      - MINER=true
+      - VALIDATOR=false
+      - DOCKER_CONTAINER=gojo89/compute-27-akash:0.1-dev
+      - NETUID=15
+      - NETWORK=test
+      - WALLET_NAME=default
+      - WALLET_HOTKEY=default
+      - AKASH=true
     expose:
       - port: 22
         as: 22
+        proto: tcp
+        to:
+          - global: true
+      - port: 3070
+        as: 3070
+        proto: tcp
+        to:
+          - global: true
+      - port: 8980
+        as: 8888
+        proto: tcp
+        to:
+          - global: true
+      - port: 8400
+        as: 8400
+        proto: tcp
+        to:
+          - global: true
+      - port: 8401
+        as: 8401
         proto: tcp
         to:
           - global: true
@@ -15,11 +43,18 @@ profiles:
     service-1:
       resources:
         cpu:
-          units: 4
+          units: 1
         memory:
           size: 512Mi
         storage:
           - size: 1Gi
+        gpu:
+          units: 1
+          attributes:
+            vendor:
+              nvidia:
+                - model: rtx4090
+                  ram: 24Gi
   placement:
     dcloud:
       pricing:

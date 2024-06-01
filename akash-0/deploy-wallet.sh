@@ -1,7 +1,14 @@
-echo "./deploy-wallet.sh <walletname> <host> [port]"
-echo Examples:
-echo    ./deploy-wallet.sh root@localhost
-echo    ./deploy-wallet.sh root@ip.akash.network 30222
+usage () {
+  echo "./deploy-wallet.sh <walletname> <host> [port]"
+  echo "Examples:"
+  echo "   ./deploy-wallet.sh root@localhost"
+  echo "   ./deploy-wallet.sh root@ip.akash.network 30222"
+}
+
+if [ "$#" -eq 0 ]; then
+  usage
+  exit 1
+fi
 
 WALLET=$1
 HOST=$2
