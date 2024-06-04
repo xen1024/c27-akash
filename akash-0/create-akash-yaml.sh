@@ -1,6 +1,25 @@
 . ./config-akash
 
-echo Configuring deploy.yaml
+usage () {
+  echo "./create-akash-yaml.sh [<template.yaml> [output.yaml]]"
+  echo "Examples:"
+  echo "   ./deploy-files.sh deploy-template-0.yaml"
+  echo "   ./deploy-files.sh deploy-template-0.yaml deploy.yaml"
+}
+
+TEMPLATE=deploy-template-0.yaml
+TARGET=deploy.yaml
+
+if [ "$#" -gt "0" ]; then
+  TEMPLATE=$1
+fi
+
+if [ "$#" -gt "1" ]; then
+  TARGET=$2
+fi
+
+echo Configuring $TARGET
+echo With template $TEMPLATE
 echo Your SSH_PUBKEY is $SSH_PUBKEY
 
 echo TODO: verify SSH_PUBKEY
@@ -16,12 +35,12 @@ echo "TODO: new args --miner (default) --validator"
 #echo WALLET_HOTKEY=$WALLET_HOTKEY
 dump_variables
 
-cat deploy-template-0.yaml | sed -e "s|SSH_KEY_PLACEHOLDER|$SSH_PUBKEY|g" \
+cat $TEMPLATE | sed -e "s|SSH_KEY_PLACEHOLDER|$SSH_PUBKEY|g" \
 -e "s|DOCKER_CONTAINER_PLACEHOLDER|$DOCKER_CONTAINER|g" \
 -e "s|MINER_PLACEHOLDER|$MINER|g" \
 -e "s|VALIDATOR_PLACEHOLDER|$VALIDATOR|g" \
 -e "s|NETUID_PLACEHOLDER|$NETUID|g" \
 -e "s|NETWORK_PLACEHOLDER|$NETWORK|g" \
 -e "s|WALLET_NAME_PLACEHOLDER|$WALLET_NAME|g" \
--e "s|WALLET_HOTKEY_PLACEHOLDER|$WALLET_HOTKEY|g" > deploy.yaml
+-e "s|WALLET_HOTKEY_PLACEHOLDER|$WALLET_HOTKEY|g" > $TARGET
 

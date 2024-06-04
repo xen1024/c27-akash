@@ -1,11 +1,11 @@
 usage () {
   echo "./deploy-files.sh <walletname> <host> [port]"
   echo "Examples:"
-  echo "   ./deploy-files.sh root@localhost"
-  echo "   ./deploy-files.sh root@ip.akash.network 30222"
+  echo "   ./deploy-files.sh wallet root@localhost"
+  echo "   ./deploy-files.sh wallet root@ip.akash.network 30222"
 }
 
-if [ "$#" -eq 0 ]; then
+if [ "$#" -lt "2" ]; then
   usage
   exit 1
 fi

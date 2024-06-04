@@ -23,3 +23,4 @@ scp -o StrictHostKeyChecking=no $CONFIG_AKASH $TO
 
 scp -o StrictHostKeyChecking=no y-scripts/startup.sh $HOST:/app
 
+scp -o StrictHostKeyChecking=no y-scripts/install0.sh y-scripts/neuron-stats $HOST:/$USER

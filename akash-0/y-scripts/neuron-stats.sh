@@ -12,6 +12,9 @@ do
   # LAST UPDATE [
   $LLFILE $LAST_UPDATE
   # LAST UPDATE ]
+  # akash-config [
+`cat ~/.config-akash`
+  # akash-config ]
   # TOP [
 `ps -A -o pid,ppid,%mem,%cpu,lstart,args --sort=-%cpu|head`
   # TOP ]
@@ -29,6 +32,7 @@ $NODE_PROCS
   # DRIVE ]
   # NVIDIA [
 `nvidia-smi 2>&1; echo result $`
+`nvcc --version 2>&1`
   # NVIDIA ]
 
   # SYS ]

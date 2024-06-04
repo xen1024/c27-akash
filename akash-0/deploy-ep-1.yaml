@@ -1,4 +1,9 @@
 version: "2.0"
+
+endpoints:
+ myendpoint:
+   kind: ip
+
 services:
   service-1:
     image: gojo89/compute-27-akash:0.1-dev
@@ -13,36 +18,44 @@ services:
       - WALLET_HOTKEY=default
       - AKASH=true
     expose:
-      - port: 22
-        as: 22
-        proto: tcp
+      - port: 80
+        as: 80
         to:
           - global: true
+      - port: 22
+        as: 22
+        to:
+          - global: true 
+            ip: myendpoint
       - port: 3070
         as: 3070
         proto: tcp
         to:
           - global: true
+            ip: myendpoint
       - port: 8980
         as: 8888
         proto: tcp
         to:
           - global: true
+            ip: myendpoint
       - port: 8400
         as: 8400
         proto: tcp
         to:
           - global: true
+            ip: myendpoint
       - port: 8401
         as: 8401
         proto: tcp
         to:
           - global: true
+            ip: myendpoint
       - port: 4444
         as: 4444
-        proto: tcp
         to:
           - global: true 
+            ip: myendpoint
 profiles:
   compute:
     service-1:
@@ -53,13 +66,6 @@ profiles:
           size: 512Mi
         storage:
           - size: 1Gi
-        gpu:
-          units: 1
-          attributes:
-            vendor:
-              nvidia:
-                - model: rtx4090
-                  ram: 24Gi
   placement:
     dcloud:
       pricing:

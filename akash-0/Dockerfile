@@ -30,14 +30,16 @@ CMD ["/usr/sbin/sshd", "-D"]
 FROM base as base-gpu
 
 # Install nvidia drivers
-RUN wget https://developer.download.nvidia.com/compute/cuda/12.3.1/local_installers/cuda-repo-ubuntu2204-12-3-local_12.3.1-545.23.08-1_amd64.deb
-#RUN cp /var/cuda-repo-ubuntu2204-12-3-local/cuda-*-keyring.gpg /usr/share/keyrings/
-#RUN dpkg -i cuda-repo-ubuntu2204-12-3-local_12.3.1-545.23.08-1_amd64.deb
-#RUN echo "deb http://archive.ubuntu.com/ubuntu/ lunar universe" >> /etc/apt/sources.list
+#RUN wget https://developer.download.nvidia.com/compute/cuda/12.3.1/local_installers/cuda-repo-ubuntu2204-12-3-local_12.3.1-545.23.08-1_amd64.deb
+COPY cuda-repo-ubuntu2204-12-3-local_12.3.1-545.23.08-1_amd64.deb /root
+RUN ls
+RUN dpkg -i /root/cuda-repo-ubuntu2204-12-3-local_12.3.1-545.23.08-1_amd64.deb
+RUN cp /var/cuda-repo-ubuntu2204-12-3-local/cuda-*-keyring.gpg /usr/share/keyrings/
+RUN echo "deb http://archive.ubuntu.com/ubuntu/ lunar universe" >> /etc/apt/sources.list
 
-#RUN apt-get update
-#RUN apt-get -y install cuda-toolkit-12-3
-#RUN apt-get -y install -y cuda-drivers
+RUN apt-get update
+RUN apt-get -y install cuda-toolkit-12-3
+#RUN apt-get -y install -y cuda-drivers || true
 
 FROM base-gpu as compute-subnet
 
@@ -75,7 +77,7 @@ COPY y-scripts/run0.sh /root/
 
 FROM compute-subnet as debug
 
-RUN apt install -y npm telnet psmisc
+RUN apt install -y npm telnet psmisc curl
 RUN npm install -g https://github.com/d08ble/livecomment
 RUN npm install -g frontail
 
