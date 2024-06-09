@@ -24,16 +24,18 @@ run_sshd () {
   sshd # 
 }
 
-run_neuron_stats () {
+run_stats () {
   echo Run neuron stats
   ./neuron-stats.sh  &
+  echo Run bittensor stats
+  ./bittensor-stats.sh  &
 }
 
 run_web
 run_lc_log
 run_app_log
 run_sshd
-run_neuron_stats
+run_stats
 
 echo Docker sleep
 sleep infinity

@@ -41,20 +41,6 @@ $NODE_PROCS
 `nvcc --version 2>&1`
   # NVIDIA ]
   
-  # Bittensor [
-  # Wallets [
-  # list [
-`bt wallet list`
-  # list ]
-  # balances test [
-`bt wallet balance --all --subtensor.network test`
-  # balances test ]
-  # balances finney [
-`bt wallet balance --all --subtensor.network finney`
-  # balances finney ]
-  # Wallets ]
-  # Bittensor ]
-
   # SYS ]
   " > $LLFILE
 

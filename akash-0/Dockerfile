@@ -92,6 +92,9 @@ COPY y-scripts/start-debug.sh /root
 RUN chmod +x /root/start-debug.sh
 COPY y-scripts/neuron-stats.sh /root
 RUN chmod +x /root/neuron-stats.sh
+COPY y-scripts/bittensor-stats.sh /root
+RUN chmod +x /root/bittensor-stats.sh
+
 COPY y-scripts/llog /app/
 #COPY y-scripts/llog/C0000.sh /app
 

@@ -16,7 +16,7 @@ install_files_on_docker_ready () {
     sleep 1
   done
 
-  sleep 5
+  sleep 10
 
   ./deploy-files.sh $WALLET $HOST
 
