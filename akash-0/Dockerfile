@@ -75,6 +75,13 @@ COPY y-scripts/run0.sh /root/
 # Start Bittensor neuron
 #CMD ["./startup.sh", ""]
 
+WORKDIR /root
+
+RUN apt install -y python3-venv
+RUN python3 -m venv bt
+RUN . bt/bin/activate && python -m pip install --upgrade bittensor
+RUN echo ". ~/bt/bin/activate" >> ~/.bashrc
+
 FROM compute-subnet as debug
 
 RUN apt install -y npm telnet psmisc curl

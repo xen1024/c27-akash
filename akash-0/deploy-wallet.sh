@@ -11,7 +11,11 @@ if [ "$#" -eq 0 ]; then
 fi
 
 WALLET=$1
-HOST=$2
+
+USER=root
+HOST=$USER@$2
+
 TARGET_PATH=/root/.bittensor/wallets/default
+
 set -x
-scp -r -o StrictHostKeyChecking=no $WALLET $HOST:$TARGET_PATH
+scp -r -o StrictHostKeyChecking=no $WALLET/* $HOST:$TARGET_PATH

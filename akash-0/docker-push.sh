@@ -1,0 +1,5 @@
+. config-akash
+
+echo DOCKER_CONTAINER=$DOCKER_CONTAINER
+
+docker push $DOCKER_CONTAINER

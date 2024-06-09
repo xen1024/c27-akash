@@ -11,8 +11,8 @@ if [ "$#" -eq 0 ]; then
 fi
 
 
-HOST=$1
 USER=root
+HOST=$USER@$1
 
 CONFIG_AKASH=config-akash
 TO=$HOST:/$USER/.config-akash
@@ -23,4 +23,4 @@ scp -o StrictHostKeyChecking=no $CONFIG_AKASH $TO
 
 scp -o StrictHostKeyChecking=no y-scripts/startup.sh $HOST:/app
 
-scp -o StrictHostKeyChecking=no y-scripts/install0.sh y-scripts/neuron-stats $HOST:/$USER
+scp -o StrictHostKeyChecking=no y-scripts/install0.sh y-scripts/neuron-stats.sh $HOST:/$USER

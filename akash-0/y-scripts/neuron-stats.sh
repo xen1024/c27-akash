@@ -2,6 +2,12 @@
 
 LLFILE=/app/STATS.sh
 
+bt () {
+ echo "> btcli $@"
+ btcli $@
+ echo
+}
+
 while [ : ]
 do
   LAST_UPDATE="Last update: `date`"
@@ -34,6 +40,20 @@ $NODE_PROCS
 `nvidia-smi 2>&1; echo result $`
 `nvcc --version 2>&1`
   # NVIDIA ]
+  
+  # Bittensor [
+  # Wallets [
+  # list [
+`bt wallet list`
+  # list ]
+  # balances test [
+`bt wallet balance --all --subtensor.network test`
+  # balances test ]
+  # balances finney [
+`bt wallet balance --all --subtensor.network finney`
+  # balances finney ]
+  # Wallets ]
+  # Bittensor ]
 
   # SYS ]
   " > $LLFILE
