@@ -3,7 +3,7 @@
 # Import config
 . ~/.config-akash
 
-source bt/bin/activate
+source ~/bt/bin/activate
 
 set -x
 

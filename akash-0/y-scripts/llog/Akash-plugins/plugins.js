@@ -94,22 +94,43 @@ codeOnHide = function ($code) {
 
 // plugins: PREVIEW BUTTON ]
 
+// plugins/main [
+//:= this.frame('client.exec')
+
+function addFont() {
+    var linkElement = $("<link>");
+    linkElement.attr({
+        "rel": "stylesheet",
+        "href": "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+    });
+    $("head").append(linkElement);
+}
+addFont()
+
+$('.heartbeat').remove();
+
+// plugins/main ]
+
 // plugins/css/main.css [
 //:= this.frame('client.css')
 body {
-  background-color: #fff;
+  background-color: #28282F;
+  color: #E7EFF8;
+  font-family: Montserrat;
 }
 #menu {
-  background: #7F00FF;
-  border-bottom:1px solid #ff00ff;
+  background: #1B1B24;
+  border-bottom:1px solid #555;
 }
 .scope-name {
-  background-color: #CCCCFF;
+  background-color: #1B1B24;
+  border: 1px dashed #9747FF;
+  border-radius: 5px;
 }
+
 #menu button {
-  border: none;
-  border-radius: 0px;
-  background: none;
+  background: #4556FF;
+  border-radius: 24px;
   color: #fff;
 }
 #menu label {
@@ -117,7 +138,7 @@ body {
   color: #fff;
 }
 #menu input:checked + label {
-  background: #f80;
+  background: #34d;
 }
 
 #menu-logo {
@@ -131,7 +152,7 @@ body {
   display: inline-block;
   float: right;
   padding-right: 14px;
-  color: #00FFFF;
+  color: #FB7D7D;
   padding-top:14px;
   font-size: 14pt;
 }
@@ -174,7 +195,7 @@ $("#menu-logo").remove()
 
 $('#menu-title').remove()
 
-$('<div id="menu-title">compute-subnet-27 Akash #TEST-1</div>').appendTo('#menu')
+$('<div id="menu-title">compute-subnet-27 Akash #TEST-1 (Docker, Debug)</div>').appendTo('#menu')
 
 // plugins/skins/menu-title.js ]
 
@@ -203,6 +224,7 @@ $('<div id="menu-title">compute-subnet-27 Akash #TEST-1</div>').appendTo('#menu'
   margin-left: 10px;
   float: left;
   color: orange;
+  min-width: 64px;
 }
 
 .ws-connect-status-blink {
