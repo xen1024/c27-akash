@@ -1,6 +1,6 @@
 . ./config-akash
 
-echo "./ssh-login.sh root@localhost"
+echo "usage: ./ssh-login.sh root@localhost"
 
 HOST=$1
 

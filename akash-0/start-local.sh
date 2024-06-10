@@ -8,15 +8,18 @@ echo Docker build
 
 install_files_on_docker_ready () {
   EXIT_CODE=1
+  sleep 5
   while [ $EXIT_CODE -ne 0 ]; do
-    # check port
-    nc -zv $HOST $PORT
-    EXIT_CODE=$?
+    # check port - bad
+#    nc -zv $HOST $PORT
+    # check ssh connection
+     scp -o StrictHostKeyChecking=no root@localhost:/root/.ssh/authorized_keys /dev/null 2>/dev/null
+     EXIT_CODE=$?
 #    echo EXIT_CODE=$EXIT_CODE
     sleep 1
   done
 
-  sleep 10
+#  sleep 15
 
   ./deploy-files.sh $WALLET $HOST
 

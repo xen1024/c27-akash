@@ -2,6 +2,7 @@
 
 . ~/bt/bin/activate
 
+echo "Upgrade Bittensor"
 python -m pip install --upgrade bittensor
 
 run_web () {
@@ -36,6 +37,9 @@ run_lc_log
 run_app_log
 run_sshd
 run_stats
+
+
+/app/gen-links.sh >/app/Akash-links-generated.sh
 
 echo Docker sleep
 sleep infinity
