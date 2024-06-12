@@ -66,7 +66,7 @@ RUN apt install -y hashcat
 RUN . ~/bt/bin/activate && pip install colorama
 RUN . ~/bt/bin/activate && cd /app && pip install -r requirements.txt
 RUN . ~/bt/bin/activate && cd /app && pip install --no-deps -r requirements-compute.txt
-RUN . ~/bt/bin/activate && cd /app && pip install -e .
+#RUN . ~/bt/bin/activate && cd /app && pip install -e .
 
 # 3. Bittensor
 

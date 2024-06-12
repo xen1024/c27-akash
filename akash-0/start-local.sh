@@ -2,9 +2,21 @@ HOST=localhost
 PORT=22
 WALLET=wallet
 
+benchmark_start () {
+  start_time=$(date +%s)
+}
+
+benchmark_end () {
+  end_time=$(date +%s)
+  time_difference=$((end_time - start_time))
+  echo "Time: $time_difference seconds"
+}
+
+benchmark_start
+
 echo Docker build
 
-./docker-build.sh
+/usr/bin/time -h ./docker-build.sh
 
 install_files_on_docker_ready () {
   EXIT_CODE=1
@@ -22,6 +34,8 @@ install_files_on_docker_ready () {
 #  sleep 15
 
   ./deploy-files.sh $WALLET $HOST
+
+  benchmark_end
 
   echo "============================="
   echo "Akash Docker container ready!"

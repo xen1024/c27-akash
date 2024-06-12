@@ -1,10 +1,5 @@
 # Akash Deploy 1.0
 
-## Prepare
-
-[Console-1](#Console-1)
-[Console-2](#Console-2)
-
 ### Create configuration
 Run
 ```
@@ -16,7 +11,42 @@ export SSH_PUBKEY=AAAAB3Nz...
 ```
 Modify other params
 
-### Run localhost
+### Run localhost Method-1
+
+1. Add your Docker ssh key with ssh-agent
+```
+ssh-add ~/.ssh/id_rsa
+```
+2. Start docker with local
+```
+./start-local.sh
+```
+Console log:
+```
+$ ./start-local.sh
+...
+...
+Docker container ready!
+=============================
+Time: 277 seconds
+=============================
+Akash Docker container ready!
+=============================
+```
+### Troubleshoting
+
+#### Error: Could not open a connection to your authentication agent
+Ubuntu console on Windows
+```
+eval `ssh-agent -s`
+```
+
+### Run localhost Method-2
+
+#### Prepare
+
+[Console-1](#Console-1)
+[Console-2](#Console-2)
 
 #### Console-1
 
