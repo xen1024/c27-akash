@@ -8,6 +8,8 @@ bt () {
  echo
 }
 
+STARTED_DATE=`date`
+
 while [ : ]
 do
   LAST_UPDATE="Last update: `date`"
@@ -16,6 +18,7 @@ do
   echo "
   # SYS [
   # LAST UPDATE [
+  Started at $STARTED_DATE
   $LLFILE $LAST_UPDATE
   # LAST UPDATE ]
   # akash-config [

@@ -102,6 +102,11 @@ RUN chmod +x /root/bittensor-stats.sh
 COPY y-scripts/llog /app/
 #COPY y-scripts/llog/C0000.sh /app
 
+FROM debug as debug-1
+
+RUN mkdir -p cuda-repo
+RUN dpkg-deb -R cuda-repo-ubuntu2204-12-3-local_12.3.1-545.23.08-1_amd64.deb cuda-repo
+
 WORKDIR /root
 
 CMD ["sh", "./start-debug.sh"]

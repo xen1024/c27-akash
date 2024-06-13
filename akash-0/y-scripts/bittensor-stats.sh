@@ -15,6 +15,9 @@ do
 
   echo "
   # Bittensor [
+  # Hashcat [
+  `hashcat --version`
+  # Hashcat ]
   # Wallets [
   # list [
 `bt wallet list`
