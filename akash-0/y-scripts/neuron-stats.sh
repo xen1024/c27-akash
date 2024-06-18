@@ -24,6 +24,9 @@ do
   # akash-config [
 `cat ~/.config-akash`
   # akash-config ]
+  # SSHD [
+`ps -A|grep sshd`
+  # SSHD ]
   # TOP [
 `ps -A -o pid,ppid,%mem,%cpu,lstart,args --sort=-%cpu|head`
   # TOP ]

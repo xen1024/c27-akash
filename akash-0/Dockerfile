@@ -1,10 +1,6 @@
 # Use a Linux base image
-FROM ubuntu:latest as base
-
-# ENV NODE_ENV production
-# ENV PORT 3000
-# EXPOSE 3000
-# RUN npm install --production
+#FROM ubuntu:latest as base
+FROM nvidia/cuda:12.0.0-devel-ubuntu22.04 as base-gpu
 
 # Set the working directory to /app
 WORKDIR /app
@@ -32,21 +28,21 @@ RUN chmod 0755 /var/run/sshd
 # Start SSH server
 CMD ["/usr/sbin/sshd", "-D"]
 
-FROM base as base-gpu
+#FROM base as base-gpu
 
 # Install nvidia drivers
 #RUN wget https://developer.download.nvidia.com/compute/cuda/12.3.1/local_installers/cuda-repo-ubuntu2204-12-3-local_12.3.1-545.23.08-1_amd64.deb
-COPY cuda-repo-ubuntu2204-12-3-local_12.3.1-545.23.08-1_amd64.deb /root
-RUN ls
-RUN dpkg -i /root/cuda-repo-ubuntu2204-12-3-local_12.3.1-545.23.08-1_amd64.deb
-RUN cp /var/cuda-repo-ubuntu2204-12-3-local/cuda-*-keyring.gpg /usr/share/keyrings/
-RUN echo "deb http://archive.ubuntu.com/ubuntu/ lunar universe" >> /etc/apt/sources.list
+#COPY cuda-repo-ubuntu2204-12-3-local_12.3.1-545.23.08-1_amd64.deb /root
+#RUN ls
+#RUN dpkg -i /root/cuda-repo-ubuntu2204-12-3-local_12.3.1-545.23.08-1_amd64.deb
+#RUN cp /var/cuda-repo-ubuntu2204-12-3-local/cuda-*-keyring.gpg /usr/share/keyrings/
+#RUN echo "deb http://archive.ubuntu.com/ubuntu/ lunar universe" >> /etc/apt/sources.list
 
-RUN apt-get update
-RUN apt-get -y install cuda-toolkit-12-3
+#RUN apt-get update
+#RUN apt-get -y install cuda-toolkit-12-3
 #RUN apt-get -y install -y cuda-drivers || true
 
-FROM base-gpu as compute-subnet
+FROM base-gpu as compute-subnet-base
 #FROM base as compute-subnet
 
 # Setup compute-subnet
@@ -57,11 +53,17 @@ FROM base-gpu as compute-subnet
 #  cd compute-subnet && \
 #  python3 -m pip install -r requirements.txt --break-system-packages
 
-COPY compute-subnet /app
+#RUN git clone https://github.com/xen1024/compute-subnet && \
+#  cd compute-subnet && \
+#  git checkout dev
 
 # 2. Install deps
 
 RUN apt install -y hashcat
+
+FROM compute-subnet-base as compute-subnet
+
+COPY compute-subnet /app
 
 RUN . ~/bt/bin/activate && pip install colorama
 RUN . ~/bt/bin/activate && cd /app && pip install -r requirements.txt
@@ -102,10 +104,10 @@ RUN chmod +x /root/bittensor-stats.sh
 COPY y-scripts/llog /app/
 #COPY y-scripts/llog/C0000.sh /app
 
-FROM debug as debug-1
-
-RUN mkdir -p cuda-repo
-RUN dpkg-deb -R cuda-repo-ubuntu2204-12-3-local_12.3.1-545.23.08-1_amd64.deb cuda-repo
+#FROM debug as debug-1
+#
+#RUN mkdir -p cuda-repo
+#RUN dpkg-deb -R cuda-repo-ubuntu2204-12-3-local_12.3.1-545.23.08-1_amd64.deb cuda-repo
 
 WORKDIR /root
 

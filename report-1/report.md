@@ -182,3 +182,9 @@ Errors were encountered while processing:
 [hgffmafleldl5ap68ej8mi0g8k.ingress.pcgameservers.com]: [Normal] [Sync] [Ingress] Scheduled for sync
 [hgffmafleldl5ap68ej8mi0g8k.ingress.pcgameservers.com]: [Normal] [Sync] [Ingress] Scheduled for sync
 ```
+
+# Links
+
+## SDL
+https://akash.network/docs/getting-started/stack-definition-language/#servicesexposeto
+

@@ -1,0 +1,49 @@
+---
+version: "2.0"
+services:
+  app:
+    image: gojo89/compute-27-akash:0.1-dev
+    expose:
+      - port: 80
+        as: 80
+        to:
+          - global: true
+      - port: 22
+        as: 22
+        to:
+          - global: true
+    command:
+      - bash
+      - "-c"
+    args:
+      - >-
+        apt-get update ; apt-get upgrade -y ; apt-get install vim -y ; sleep
+        infinity
+profiles:
+  compute:
+    app:
+      resources:
+        cpu:
+          units:
+            - 1
+        memory:
+          size: 512Mi
+        storage:
+          - size: 1Gi
+        gpu:
+          units: 1
+          attributes:
+            vendor:
+              nvidia:
+                - model: rtx4090
+  placement:
+    akash:
+      pricing:
+        app:
+          denom: uakt
+          amount: 10000
+deployment:
+  app:
+    akash:
+      profile: app
+      count: 1

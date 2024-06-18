@@ -22,7 +22,8 @@ run_app_log () {
 
 run_sshd () {
   echo Run sshd
-  sshd # 
+  #sshd # 
+  /usr/sbin/sshd -D
 }
 
 run_stats () {
