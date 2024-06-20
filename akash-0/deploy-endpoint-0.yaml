@@ -19,6 +19,7 @@ services:
         git clone https://github.com/xen1024/c27-akash.git ;
         cp c27-akash/akash-0/config-akash ~/.config-akash ;
         cd c27-akash/akash-0/y-scripts && ./post-install.sh ;
+        /usr/sbin/sshd -D ;
         sleep infinity'
     
     expose:
