@@ -15,7 +15,10 @@ services:
     args:
       - 'apt-get update ;
         apt-get upgrade -y ;
-        apt-get install vim curl wget git -y ;
+        apt-get install vim curl wget git openssh-server -y ;
+        git clone https://github.com/xen1024/c27-akash.git ;
+        cp c27-akash/akash-0/config-akash ~/.config-akash ;
+        cd c27-akash/akash-0/y-scripts && ./post-install.sh ;
         sleep infinity'
     
     expose:
