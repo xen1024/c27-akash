@@ -2,7 +2,7 @@
 version: "2.0"
 services:
   app:
-    image: gojo89/compute-27-akash:0.1-dev
+    image: gojo89/compute-27-akash:0.2-dev
     expose:
       - port: 80
         as: 80
@@ -29,7 +29,7 @@ profiles:
         memory:
           size: 512Mi
         storage:
-          - size: 1Gi
+          - size: 100Gi
         gpu:
           units: 1
           attributes:

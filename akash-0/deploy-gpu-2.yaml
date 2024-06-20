@@ -29,7 +29,7 @@ profiles:
         memory:
           size: 512Mi
         storage:
-          - size: 1Gi
+          - size: 100Gi
         gpu:
           units: 1
           attributes:

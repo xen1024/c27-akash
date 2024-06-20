@@ -4,6 +4,7 @@ services:
     image: DOCKER_CONTAINER_PLACEHOLDER
     env:
       - SSH_KEY=SSH_KEY_PLACEHOLDER
+      - SSH_KEY1=SSH_KEY_PLACEHOLDER1
       - MINER=MINER_PLACEHOLDER
       - VALIDATOR=VALIDATOR_PLACEHOLDER
       - DOCKER_CONTAINER=DOCKER_CONTAINER_PLACEHOLDER
@@ -28,6 +29,21 @@ services:
         proto: tcp
         to:
           - global: true
+      - port: 8400
+        as: 8400
+        proto: tcp
+        to:
+          - global: true
+      - port: 8401
+        as: 8401
+        proto: tcp
+        to:
+          - global: true          
+      - port: 4444
+        as: 4444
+        proto: tcp
+        to:
+          - global: true 
 profiles:
   compute:
     service-1:
@@ -37,7 +53,7 @@ profiles:
         memory:
           size: 512Mi
         storage:
-          - size: 1Gi
+          - size: 100Gi
         gpu:
           units: 1
           attributes:

@@ -6,6 +6,7 @@ FROM nvidia/cuda:12.0.0-devel-ubuntu22.04 as base-gpu
 WORKDIR /app
 
 ARG SSH_PUBKEY0
+ARG SSH_PUBKEY1
 
 # Install dependencies
 RUN apt update && \
@@ -21,6 +22,7 @@ RUN apt install -y openssh-server
 RUN mkdir -p /root/.ssh
 RUN chmod 700 /root/.ssh
 RUN echo "$SSH_PUBKEY0" > /root/.ssh/authorized_keys
+RUN echo "$SSH_PUBKEY1" > /root/.ssh/authorized_keys
 RUN chmod 700 /root/.ssh/authorized_keys
 RUN mkdir -p /var/run/sshd
 RUN chmod 0755 /var/run/sshd

@@ -9,6 +9,7 @@ services:
     image: DOCKER_CONTAINER_PLACEHOLDER
     env:
       - SSH_KEY=SSH_KEY_PLACEHOLDER
+      - SSH_KEY1=SSH_KEY_PLACEHOLDER1
       - MINER=MINER_PLACEHOLDER
       - VALIDATOR=VALIDATOR_PLACEHOLDER
       - DOCKER_CONTAINER=DOCKER_CONTAINER_PLACEHOLDER
@@ -61,11 +62,11 @@ profiles:
     service-1:
       resources:
         cpu:
-          units: 1
+          units: 4
         memory:
           size: 512Mi
         storage:
-          - size: 1Gi
+          - size: 100Gi
   placement:
     dcloud:
       pricing:

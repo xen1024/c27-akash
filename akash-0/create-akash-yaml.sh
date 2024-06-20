@@ -21,6 +21,7 @@ fi
 echo Configuring $TARGET
 echo With template $TEMPLATE
 echo Your SSH_PUBKEY is $SSH_PUBKEY
+echo Your SSH_PUBKEY1 is $SSH_PUBKEY1
 
 echo TODO: verify SSH_PUBKEY
 echo "TODO: new args --no-gpu and --gpu A100 flags"
@@ -36,6 +37,7 @@ echo "TODO: new args --miner (default) --validator"
 dump_variables
 
 cat $TEMPLATE | sed -e "s|SSH_KEY_PLACEHOLDER|$SSH_PUBKEY|g" \
+-e "s|SSH_KEY_PLACEHOLDER1|$SSH_PUBKEY1|g" \
 -e "s|DOCKER_CONTAINER_PLACEHOLDER|$DOCKER_CONTAINER|g" \
 -e "s|MINER_PLACEHOLDER|$MINER|g" \
 -e "s|VALIDATOR_PLACEHOLDER|$VALIDATOR|g" \

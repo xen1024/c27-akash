@@ -15,7 +15,7 @@ services:
     args:
       - 'apt-get update ;
         apt-get upgrade -y ;
-        apt-get install vim -y ;
+        apt-get install vim curl wget git -y ;
         sleep infinity'
     
     expose:
@@ -61,7 +61,7 @@ profiles:
         memory:
           size: 512Mi
         storage:
-          size: 1Gi
+          size: 100Gi
           
   placement:
     akash: 
