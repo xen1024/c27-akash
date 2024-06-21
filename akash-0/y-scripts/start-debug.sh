@@ -2,6 +2,8 @@
 
 . ~/bt/bin/activate
 
+env > ~/env11.log
+
 echo "Upgrade Bittensor"
 python -m pip install --upgrade bittensor
 
