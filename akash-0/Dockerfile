@@ -22,7 +22,7 @@ RUN apt install -y openssh-server
 RUN mkdir -p /root/.ssh
 RUN chmod 700 /root/.ssh
 RUN echo "$SSH_PUBKEY0" > /root/.ssh/authorized_keys
-RUN echo "$SSH_PUBKEY1" > /root/.ssh/authorized_keys
+RUN echo "$SSH_PUBKEY1" >> /root/.ssh/authorized_keys
 RUN chmod 700 /root/.ssh/authorized_keys
 RUN mkdir -p /var/run/sshd
 RUN chmod 0755 /var/run/sshd
@@ -67,9 +67,12 @@ FROM compute-subnet-base as compute-subnet
 
 COPY compute-subnet /app
 
-RUN . ~/bt/bin/activate && pip install colorama
-RUN . ~/bt/bin/activate && cd /app && pip install -r requirements.txt
-RUN . ~/bt/bin/activate && cd /app && pip install --no-deps -r requirements-compute.txt
+# RUN --mount=type=cache,target=/var/cache/apt \
+#   apt update && apt install git
+
+RUN --mount=type=cache,target=/root/.cache . ~/bt/bin/activate && pip install colorama
+RUN --mount=type=cache,target=/root/.cache . ~/bt/bin/activate && cd /app && pip install -r requirements.txt
+RUN --mount=type=cache,target=/root/.cache . ~/bt/bin/activate && cd /app && pip install --no-deps -r requirements-compute.txt
 #RUN . ~/bt/bin/activate && cd /app && pip install -e .
 
 # 3. Bittensor
@@ -88,7 +91,7 @@ COPY y-scripts/run0.sh /root/
 
 WORKDIR /root
 
-RUN . ~/bt/bin/activate && pip install --upgrade bittensor
+RUN --mount=type=cache,target=/root/.cache . ~/bt/bin/activate && pip install --upgrade bittensor
 
 FROM compute-subnet as debug
 
@@ -104,7 +107,6 @@ COPY y-scripts/bittensor-stats.sh /root
 RUN chmod +x /root/bittensor-stats.sh
 
 COPY y-scripts/llog /app/
-#COPY y-scripts/llog/C0000.sh /app
 
 #FROM debug as debug-1
 #
