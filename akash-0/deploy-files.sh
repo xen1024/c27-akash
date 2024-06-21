@@ -12,9 +12,10 @@ fi
 
 WALLET=$1
 HOST=$2
+PORT=$3
 TARGET_PATH=/root/.bittensor/wallets/default
 
-echo New design:
+echo $WALLET $HOST $PORT
 
 echo "* Deploy config"
 
@@ -23,4 +24,3 @@ echo "* Deploy config"
 echo "* Deploy wallet"
 
 ./deploy-wallet.sh $@
-

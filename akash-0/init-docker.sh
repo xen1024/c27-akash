@@ -13,14 +13,15 @@ fi
 
 USER=root
 HOST=$USER@$1
+PORT=${2:+-P $2}
 
 CONFIG_AKASH=config-akash
 TO=$HOST:/$USER/.config-akash
 
 set -x
 
-scp -o StrictHostKeyChecking=no $CONFIG_AKASH $TO
+scp $PORT -o StrictHostKeyChecking=no $CONFIG_AKASH $TO
 
-scp -o StrictHostKeyChecking=no y-scripts/startup.sh $HOST:/app
+scp $PORT -o StrictHostKeyChecking=no y-scripts/startup.sh $HOST:/app
 
-scp -o StrictHostKeyChecking=no y-scripts/install0.sh y-scripts/neuron-stats.sh y-scripts/bittensor-stats.sh y-scripts/start-debug.sh $HOST:/$USER
+scp $PORT -o StrictHostKeyChecking=no y-scripts/install0.sh y-scripts/neuron-stats.sh y-scripts/bittensor-stats.sh y-scripts/start-debug.sh $HOST:/$USER

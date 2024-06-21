@@ -13,7 +13,12 @@ services:
       - WALLET_NAME=WALLET_NAME_PLACEHOLDER
       - WALLET_HOTKEY=WALLET_HOTKEY_PLACEHOLDER
       - AKASH=true
+      - JUPYTER_TOKEN=passwd
     expose:
+      - port: 8888
+        as: 80
+        to:
+          - global: true
       - port: 22
         as: 22
         proto: tcp
@@ -25,7 +30,7 @@ services:
         to:
           - global: true
       - port: 8980
-        as: 8888
+        as: 8980
         proto: tcp
         to:
           - global: true
@@ -60,7 +65,6 @@ profiles:
             vendor:
               nvidia:
                 - model: rtx4090
-                  ram: 24Gi
   placement:
     dcloud:
       pricing:

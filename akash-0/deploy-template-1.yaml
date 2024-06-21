@@ -13,6 +13,7 @@ services:
       - WALLET_NAME=WALLET_NAME_PLACEHOLDER
       - WALLET_HOTKEY=WALLET_HOTKEY_PLACEHOLDER
       - AKASH=true
+      - JUPYTER_TOKEN=passwd
     expose:
       - port: 22
         as: 22

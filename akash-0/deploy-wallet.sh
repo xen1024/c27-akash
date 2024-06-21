@@ -14,8 +14,9 @@ WALLET=$1
 
 USER=root
 HOST=$USER@$2
+PORT=${3:+-P $3}
 
 TARGET_PATH=/root/.bittensor/wallets/default
 
 set -x
-scp -r -o StrictHostKeyChecking=no $WALLET/* $HOST:$TARGET_PATH
+scp $PORT -r -o StrictHostKeyChecking=no $WALLET/* $HOST:$TARGET_PATH

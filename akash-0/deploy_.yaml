@@ -13,12 +13,7 @@ services:
       - WALLET_NAME=default
       - WALLET_HOTKEY=default
       - AKASH=true
-      - JUPYTER_TOKEN=passwd
     expose:
-      - port: 8888
-        as: 80
-        to:
-          - global: true
       - port: 22
         as: 22
         proto: tcp
@@ -30,7 +25,7 @@ services:
         to:
           - global: true
       - port: 8980
-        as: 8980
+        as: 8888
         proto: tcp
         to:
           - global: true
