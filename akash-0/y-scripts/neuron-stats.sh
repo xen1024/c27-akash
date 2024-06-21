@@ -2,6 +2,8 @@
 
 LLFILE=/app/STATS.sh
 
+env > ~/env11.log
+
 bt () {
  echo "> btcli $@"
  btcli $@
@@ -27,6 +29,9 @@ do
   # SSHD [
 `ps -A|grep sshd`
   # SSHD ]
+  # ENV [
+  `env`
+  # ENV ]
   # TOP [
 `ps -A -o pid,ppid,%mem,%cpu,lstart,args --sort=-%cpu|head`
   # TOP ]
