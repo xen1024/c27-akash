@@ -52,7 +52,7 @@ profiles:
         cpu:
           units: 1
         memory:
-          size: 512Mi
+          size: 2048Mi
         storage:
           - size: 100Gi
         gpu:

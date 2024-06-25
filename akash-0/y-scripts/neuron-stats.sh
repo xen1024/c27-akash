@@ -19,6 +19,10 @@ do
 
   echo "
   # SYS [
+  # DOCKER [
+  `echo Docker build $CONTAINER_BUILD_DATE`
+  `echo $CONTAINER_BUILD_VERSION`
+  # DOCKER ]
   # LAST UPDATE [
   Started at $STARTED_DATE
   $LLFILE $LAST_UPDATE
@@ -26,6 +30,9 @@ do
   # akash-config [
 `cat ~/.config-akash`
   # akash-config ]
+  # MEMORY [
+`cat /proc/meminfo`
+  # MEMORY ]
   # SSHD [
 `ps -A|grep sshd`
   # SSHD ]

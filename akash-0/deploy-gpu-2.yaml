@@ -2,7 +2,7 @@
 version: "2.0"
 services:
   app:
-    image: gojo89/compute-27-akash:0.1-dev
+    image: gojo89/compute-27-akash:0.3-dev
     expose:
       - port: 80
         as: 80
@@ -27,7 +27,7 @@ profiles:
           units:
             - 1
         memory:
-          size: 512Mi
+          size: 2048Mi
         storage:
           - size: 100Gi
         gpu:
@@ -35,7 +35,16 @@ profiles:
           attributes:
             vendor:
               nvidia:
+                - model: h100
                 - model: a100
+                - model: rtx4090
+                - model: rtx3090
+                - model: v100
+                - model: rtx3060ti
+                - model: p100
+                - model: t4
+                - model: A6000
+                - model: A4000
   placement:
     akash:
       pricing:

@@ -10,6 +10,7 @@ debug http://localhost:8401/
 # TAO [
 https://taostats.io/
 https://taostats.io/#net_id_27
+https://taostats.io/api/
 # TAO ]
 # Design [
 Figma design NI Style guide
