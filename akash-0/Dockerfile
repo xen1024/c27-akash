@@ -9,6 +9,8 @@ ARG SSH_PUBKEY0
 ARG SSH_PUBKEY1
 
 # Install dependencies
+RUN apt update
+RUN apt upgrade -y
 RUN apt update && \
     apt install -y build-essential git python3 python3-pip vim curl telnet psmisc
 

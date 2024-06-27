@@ -8,8 +8,9 @@ echo "Upgrade Bittensor"
 python -m pip install --upgrade bittensor
 
 run_web () {
-  echo Run web livecomment
-  livecomment --ws_port_client 8888 --path /app --dangerousCodeExecutionClient >/app/lc.log 2>&1 &
+  echo Run web livecomment $PORT0 $PORT1
+#  livecomment --ws_port_client 8888 --path /app --dangerousCodeExecutionClient >/app/lc.log 2>&1 &
+  livecomment --ws_port_client $PORT1 --path /app --dangerousCodeExecutionClient >/app/lc.log 2>&1 &
 }
 
 run_lc_log () {
@@ -35,14 +36,22 @@ run_stats () {
   ./bittensor-stats.sh  &
 }
 
-run_web
-run_lc_log
-run_app_log
 run_sshd
 run_stats
 
-
 /app/gen-links.sh >/app/Akash-links-generated.sh
+
+set -x
+
+while [ -z "${PORT0}" ]; do
+  . ~/config-debug
+  sleep 1
+done
+
+run_web
+run_lc_log
+run_app_log
+
 
 echo Docker sleep
 sleep infinity

@@ -1,8 +1,13 @@
-EXTIP=`curl https://checkip.amazonaws.com`
+set -x
+
+. ~/config-debug
+
+: ${EXTIP:=`curl https://checkip.amazonaws.com`}
+
 echo "
 # Debug Akash [
-debug http://$EXTIP:8400/
+debug http://$EXTIP:$PORT2/
 
-debug http://$EXTIP:8401/
+debug http://$EXTIP:$PORT3/
 # Debug Akash ]
 "
