@@ -35,19 +35,13 @@ services:
           - global: true
             ip: myendpoint
       - port: 8980
-        as: 8888
+        as: 8980
         proto: tcp
         to:
           - global: true
             ip: myendpoint
-      - port: 8400
-        as: 8400
-        proto: tcp
-        to:
-          - global: true
-            ip: myendpoint
-      - port: 8401
-        as: 8401
+      - port: 8091
+        as: 8091
         proto: tcp
         to:
           - global: true
@@ -57,14 +51,19 @@ services:
         to:
           - global: true 
             ip: myendpoint
+      - port: 8091
+        as: 8091
+        proto: tcp
+        to:
+          - global: true 
 profiles:
   compute:
     service-1:
       resources:
         cpu:
-          units: 4
+          units: 1
         memory:
-          size: 512Mi
+          size: 1024Mi
         storage:
           - size: 100Gi
   placement:

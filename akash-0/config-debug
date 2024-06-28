@@ -1,5 +1,5 @@
-export PORT0=3070
-export PORT1=31519
-export PORT2=31346
-export PORT3=32374
+export PORT0=32583
+export PORT1=32745
+export PORT2=30813
+export PORT3=31173
 export EXTIP=provider.pcgameservers.com

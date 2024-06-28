@@ -6,12 +6,13 @@ endpoints:
 
 services:
   service-1:
-    image: gojo89/compute-27-akash:0.1-dev
+    image: gojo89/compute-27-akash:0.3.1-dev
     env:
       - SSH_KEY=AAAAB3NzaC1yc2EAAAADAQABAAABgQDK23t11Y6GkFeiLxnv0cHI4DNXfzUTt49lmJRUsP1af3t1ZXHfaDAQNFQ2KAkgYOB/iJeHxAXmQlrclNDpR5W+tTwUBelTeT349uQtG3InSVtlSJYwsO13wAzhv3LRuSNPmZABq6PslxFQE1ViniTo/mblPlOr41BHImap1FxH64k98KbqmfBhovjpbRthkQNvtzk1as4Lqh3ZvFFJaApLnfWPZAuSjLZZ8qFGUQ/eYXsDb3BySiAM/omnOGPGtx1cpifqJhyLeC4/Ofgt2anvcteCSF4xcKwBFvgmIDMZrchlzdO9kNj0H6dkUmVo3hs/ijn1B6SWkHe+2L7f2jrp7jKbndOnLFswkB3BKmr/IYR4wqgCJ3Iy1H7HPQ3jqseYlCkIiwTyeCLrmEqtysTG5i2moa1mQOd3yuDUMcGNU1zgRWJotxH9eFRMN7s5/KBcF81sNFeZY9JLSWkI5SUBLCP1pHONgSeh7lpW9vjrV7gtzQTNOCgUyalHIHGdpgs=
+      - SSH_KEY1=AAAAB3NzaC1yc2EAAAADAQABAAABgQDK23t11Y6GkFeiLxnv0cHI4DNXfzUTt49lmJRUsP1af3t1ZXHfaDAQNFQ2KAkgYOB/iJeHxAXmQlrclNDpR5W+tTwUBelTeT349uQtG3InSVtlSJYwsO13wAzhv3LRuSNPmZABq6PslxFQE1ViniTo/mblPlOr41BHImap1FxH64k98KbqmfBhovjpbRthkQNvtzk1as4Lqh3ZvFFJaApLnfWPZAuSjLZZ8qFGUQ/eYXsDb3BySiAM/omnOGPGtx1cpifqJhyLeC4/Ofgt2anvcteCSF4xcKwBFvgmIDMZrchlzdO9kNj0H6dkUmVo3hs/ijn1B6SWkHe+2L7f2jrp7jKbndOnLFswkB3BKmr/IYR4wqgCJ3Iy1H7HPQ3jqseYlCkIiwTyeCLrmEqtysTG5i2moa1mQOd3yuDUMcGNU1zgRWJotxH9eFRMN7s5/KBcF81sNFeZY9JLSWkI5SUBLCP1pHONgSeh7lpW9vjrV7gtzQTNOCgUyalHIHGdpgs=1
       - MINER=true
       - VALIDATOR=false
-      - DOCKER_CONTAINER=gojo89/compute-27-akash:0.1-dev
+      - DOCKER_CONTAINER=gojo89/compute-27-akash:0.3.1-dev
       - NETUID=15
       - NETWORK=test
       - WALLET_NAME=default
@@ -34,19 +35,13 @@ services:
           - global: true
             ip: myendpoint
       - port: 8980
-        as: 8888
+        as: 8980
         proto: tcp
         to:
           - global: true
             ip: myendpoint
-      - port: 8400
-        as: 8400
-        proto: tcp
-        to:
-          - global: true
-            ip: myendpoint
-      - port: 8401
-        as: 8401
+      - port: 8091
+        as: 8091
         proto: tcp
         to:
           - global: true
@@ -63,7 +58,7 @@ profiles:
         cpu:
           units: 1
         memory:
-          size: 512Mi
+          size: 1024Mi
         storage:
           - size: 100Gi
   placement:

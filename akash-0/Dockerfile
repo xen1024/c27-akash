@@ -97,6 +97,8 @@ RUN --mount=type=cache,target=/root/.cache . ~/bt/bin/activate && pip install --
 
 FROM compute-subnet as debug
 
+RUN apt install -y net-tools
+
 RUN apt install -y npm  
 RUN npm install -g https://github.com/d08ble/livecomment
 RUN npm install -g frontail

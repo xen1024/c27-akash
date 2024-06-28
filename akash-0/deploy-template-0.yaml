@@ -49,6 +49,11 @@ services:
         proto: tcp
         to:
           - global: true 
+      - port: 8091
+        as: 8091
+        proto: tcp
+        to:
+          - global: true
 profiles:
   compute:
     service-1:
