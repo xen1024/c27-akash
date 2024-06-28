@@ -15,9 +15,17 @@ do
 
   echo "
   # Bittensor [
+  # VERSIONS [
   # Hashcat [
-  `hashcat --version`
+`hashcat --version`
   # Hashcat ]
+  # bittensor [
+`pip show bittensor`
+  # bittensor ]
+  # compute-subnet [
+`pip show compute-subnet`
+  # compute-subnet ]
+  # VERSIONS ]
   # Wallets [
   # list [
 `bt wallet list`
