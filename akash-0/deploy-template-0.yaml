@@ -3,7 +3,7 @@ services:
   service-1:
     image: DOCKER_CONTAINER_PLACEHOLDER
     env:
-      - SSH_KEY=SSH_KEY_PLACEHOLDER
+      - SSH_KEY=SSH_KEY_PLACEHOLDER0
       - SSH_KEY1=SSH_KEY_PLACEHOLDER1
       - MINER=MINER_PLACEHOLDER
       - VALIDATOR=VALIDATOR_PLACEHOLDER
@@ -15,10 +15,6 @@ services:
       - AKASH=true
       - JUPYTER_TOKEN=passwd
     expose:
-      - port: 8888
-        as: 80
-        to:
-          - global: true
       - port: 22
         as: 22
         proto: tcp

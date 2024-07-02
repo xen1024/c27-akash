@@ -36,7 +36,7 @@ echo "TODO: new args --miner (default) --validator"
 #echo WALLET_HOTKEY=$WALLET_HOTKEY
 dump_variables
 
-cat $TEMPLATE | sed -e "s|SSH_KEY_PLACEHOLDER|$SSH_PUBKEY|g" \
+cat $TEMPLATE | sed -e "s|SSH_KEY_PLACEHOLDER0|$SSH_PUBKEY|g" \
 -e "s|SSH_KEY_PLACEHOLDER1|$SSH_PUBKEY1|g" \
 -e "s|DOCKER_CONTAINER_PLACEHOLDER|$DOCKER_CONTAINER|g" \
 -e "s|MINER_PLACEHOLDER|$MINER|g" \
