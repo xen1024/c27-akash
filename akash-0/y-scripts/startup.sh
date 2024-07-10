@@ -11,6 +11,9 @@ set -x
 if [ $AKASH ]; then
   echo Configuring ssh key
   echo "ssh-rsa $SSH_PUBKEY root" > /root/.ssh/authorized_keys
+
+  echo Export Akash ENV
+  env > ~/.env-akash
 fi
 
 # WanDB
